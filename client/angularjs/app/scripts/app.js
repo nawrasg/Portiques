@@ -8,17 +8,17 @@
  *
  * Main module of the application.
  */
-angular
-  .module('angularjsApp', ['ngRoute', 'ngSanitize', 'ngMaterial'])
-  .config(function ($routeProvider) {
+var nApp = angular.module('angularjsApp', ['ngRoute', 'ngSanitize', 'ngMaterial']);
+  
+nApp.config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
       })
       .otherwise({
         redirectTo: '/'
