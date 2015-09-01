@@ -13,8 +13,8 @@ var nApp = angular.module('angularjsApp', ['ngRoute', 'ngSanitize', 'ngMaterial'
 
 nApp.config(function($routeProvider) {
 	$routeProvider.when('/', {
-		templateUrl : 'views/main.html',
-		controller : 'MainCtrl'
+		templateUrl : 'views/national.html',
+		controller : 'NationalCtrl'
 	}).when('/login', {
 		templateUrl : 'views/login.html',
 		controller : 'LoginCtrl'
@@ -25,7 +25,7 @@ nApp.config(function($routeProvider) {
 
 nApp.run(function($rootScope, $location, $sessionStorage) {
 	$rootScope.$on("$routeChangeStart", function(event, next, current) {
-		if ($sessionStorage.api == null) {
+		if ($sessionStorage.user == null) {
 			$rootScope.navigation = true;
 			$location.path('/login');
 		}
