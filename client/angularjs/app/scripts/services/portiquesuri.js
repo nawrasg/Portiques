@@ -9,6 +9,6 @@
 nApp.factory('PortiquesUri', function() {
 	var mIP = 'http://localhost:8080/portiques';
 	return {
-		Login : function(){return mIP + 'auth';},
+		Login : function(){return mIP + '/auth';},
 	};
 });
