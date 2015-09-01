@@ -22,7 +22,8 @@
   "description": "Afficher et contrôler les UP.",
   "dependencies": {
     "angular-dashboard-framework": "0.8.0",
-    "angular-material": "~0.10.1"
+    "angular-material": "~0.10.1",
+    "angular-chart.js": "~0.7.2"
   },
   "devDependencies": {
     "angular-local-storage": "0.1.5"
