@@ -23,3 +23,11 @@ nApp.config(function($routeProvider) {
 	});
 });
 
+nApp.run(function($rootScope, $location, $sessionStorage) {
+	$rootScope.$on("$routeChangeStart", function(event, next, current) {
+		if ($sessionStorage.api == null) {
+			$rootScope.navigation = true;
+			$location.path('/login');
+		}
+	});
+});
