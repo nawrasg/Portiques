@@ -1,4 +1,4 @@
-<div>
-  <h1>Widget view</h1>
-  <p>Content of {{config.sample}}</p>
+<div ng-controller="TrainWidgetController">
+	<button type="button" ng-class="statusClasse" ng-click="status()" id="status">{{statusLabel}}</button>
+	<canvas id="doughnut" class="chart chart-doughnut" data="data" labels="labels" colours="colors" options="options"></canvas>
 </div>
