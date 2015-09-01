@@ -21,7 +21,10 @@
   ],
   "description": "Information sur le remplissage d'un train et controle de l'embarquement",
   "dependencies": {
-    "angular-dashboard-framework": "0.8.0"
+    "angular-dashboard-framework": "0.8.0",
+    "angular-chart.js": "~0.7.1",
+    "sockjs-client": "~1.0.0",
+    "stomp-websocket": "~2.3.4"
   },
   "devDependencies": {
     "angular-local-storage": "0.1.5"
