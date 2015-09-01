@@ -9,10 +9,7 @@
  * Main module of the application.
  */
 angular
-  .module('angularjsApp', [
-    'ngRoute',
-    'ngSanitize'
-  ])
+  .module('angularjsApp', ['ngRoute', 'ngSanitize', 'ngMaterial'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
