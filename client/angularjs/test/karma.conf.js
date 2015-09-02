@@ -35,6 +35,8 @@ module.exports = function(config) {
       'bower_components/adf-structures-base/dist/adf-structures-base.js',
       'bower_components/sockjs-client/dist/sockjs.js',
       'bower_components/stomp-websocket/lib/stomp.min.js',
+      'bower_components/Chart.js/Chart.js',
+      'bower_components/angular-chart.js/dist/angular-chart.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
