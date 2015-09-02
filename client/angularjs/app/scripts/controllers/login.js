@@ -16,7 +16,7 @@ nApp.controller('LoginCtrl', function($scope, $http, base64, $sessionStorage, $r
 			if(status == 202){
 				$sessionStorage.user = data;
 				delete $http.defaults.headers.common.Authorization;
-				$location.path('/national');
+				$location.path('/demo');
 			}else{
 				console.log(status, data);
 			}

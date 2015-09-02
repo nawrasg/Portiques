@@ -3,13 +3,11 @@
 /**
  * @ngdoc overview
  * @name angularjsApp
- * @description
- * # angularjsApp
- *
+ * @description # angularjsApp
+ * 
  * Main module of the application.
  */
-var nApp = angular.module('angularjsApp', ['ngRoute', 'ngSanitize', 'ngMaterial', 'ngStorage', 'ab-base64']);
-  
+var nApp = angular.module('angularjsApp', [ 'ngRoute', 'ngSanitize', 'ngMaterial', 'ngStorage', 'ab-base64' ]);
 
 nApp.config(function($routeProvider) {
 	$routeProvider.when('/', {
@@ -18,6 +16,9 @@ nApp.config(function($routeProvider) {
 	}).when('/login', {
 		templateUrl : 'views/login.html',
 		controller : 'LoginCtrl'
+	}).when('/demo', {
+		templateUrl : 'views/demo.html',
+		controller : 'DemoCtrl'
 	}).otherwise({
 		redirectTo : '/'
 	});
