@@ -1,0 +1,6 @@
+fr.capgemini.sncf.interceptors
+fr.capgemini.sncf.rest
+fr.capgemini.sncf.rest.controllers
+fr.capgemini.sncf.rest.controllers.delete
+fr.capgemini.sncf.rest.controllers.put
+fr.capgemini.sncf.types

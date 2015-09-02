@@ -1,0 +1,17 @@
+fr\capgemini\sncf\types\NawrasBean.class
+fr\capgemini\sncf\rest\CamelProcessor.class
+fr\capgemini\sncf\rest\controllers\NotificationController.class
+fr\capgemini\sncf\rest\Sncf.class
+fr\capgemini\sncf\rest\controllers\put\TrainController.class
+fr\capgemini\sncf\rest\WebSocketConfig.class
+fr\capgemini\sncf\rest\SimpleCORSFilter.class
+fr\capgemini\sncf\rest\Sncf$1.class
+fr\capgemini\sncf\rest\UPSimulator.class
+fr\capgemini\sncf\types\Moment.class
+fr\capgemini\sncf\types\Train.class
+fr\capgemini\sncf\types\Error.class
+fr\capgemini\sncf\types\ClientsMillis.class
+fr\capgemini\sncf\rest\controllers\SearchController.class
+fr\capgemini\sncf\interceptors\AuthInterceptor.class
+fr\capgemini\sncf\rest\RestAdapter.class
+fr\capgemini\sncf\rest\controllers\SncfController.class

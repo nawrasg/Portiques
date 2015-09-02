@@ -1,0 +1,26 @@
+{
+  "name": "angular-stomp",
+  "version": "0.0.3",
+  "homepage": "https://github.com/wishbear/AngularStomp",
+  "authors": [
+    "Glenn Tarcea"
+  ],
+  "main": "angular-stomp.js",
+  "keywords": [
+    "stomp",
+    "amqp",
+    "mq",
+    "rabbitmq"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "stomp-websocket": "2.3.0"
+  }
+}

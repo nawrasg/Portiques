@@ -1,0 +1,36 @@
+{
+  "name": "angular-stomp",
+  "version": "0.0.3",
+  "homepage": "https://github.com/wishbear/AngularStomp",
+  "authors": [
+    "Glenn Tarcea"
+  ],
+  "main": "angular-stomp.js",
+  "keywords": [
+    "stomp",
+    "amqp",
+    "mq",
+    "rabbitmq"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "stomp-websocket": "2.3.0"
+  },
+  "_release": "0.0.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.3",
+    "commit": "9c66445c1e8a9a8ffb9b54ccc4399698d8edac00"
+  },
+  "_source": "git://github.com/wishbear/AngularStomp.git",
+  "_target": "~0.0.3",
+  "_originalSource": "angular-stomp",
+  "_direct": true
+}
