@@ -7,7 +7,9 @@
  * 
  * Main module of the application.
  */
-var nApp = angular.module('angularjsApp', [ 'ngRoute', 'ngSanitize', 'ngMaterial', 'ngStorage', 'ab-base64' ]);
+var nApp = angular.module('angularjsApp', [ 'ngRoute', 'ngSanitize', 'ngMaterial', 'ngStorage', 'ab-base64', 'chart.js',
+                                            'googlechart', 'adf', 'adf.structures.base', 'adf.widget.Alarmes', 
+                                            'adf.widget.TrainUP', 'adf.widget.Train', 'adf.widget.Trains', 'adf.widget.Gate']);
 
 nApp.config(function($routeProvider) {
 	$routeProvider.when('/', {
