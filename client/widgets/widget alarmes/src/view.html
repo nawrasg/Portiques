@@ -1,13 +1,14 @@
+
 <div ng-controller="AlarmCtrl">
 	<md-input-container>
 		<label>Recherchez</label>
 		<input ng-model=search ng-change="filter(search)">
 	</md-input-container>
-	<div layout=row>
+	<div layout=row style="margin-bottom:20px">
 		<md-checkbox flex class=md-primary ng-model="showAll" aria-label="Tout afficher">Tout afficher</md-checkbox>
 		<button class="btn btn-success btn-lg" ng-click="exportExcel('#alarmTable')">Exporter Excel</button>
 	</div>
-	<table class="table table-striped" id="alarmTable">
+	<table class="table table-striped" id="alarmTable" hide-sm>
 		<thead>
 			<tr>
 				<th>Etat</th>
@@ -26,6 +27,17 @@
 			<td>{{::alarm.quai}}</td>
 			<td>{{::alarm.up}}</td>
 			<td>{{::alarm.message}}</td>
+			<td><img ng-src="{{getActions(alarm)}}" ng-click="seeActions(alarm)"></td>
+		</tr>
+	</table>
+	<table class="table table-striped" hide-gt-sm>
+		<tr ng-repeat="alarm in alarms" ng-hide="alarm.treated && !showAll">
+			<td><img ng-src="{{getIcon(alarm)}}"></td>
+			<td flex layout=column layout-align=>
+				<label>{{::alarm.level}} - {{::alarm.message}}</label>
+				<label>Quai : {{::alarm.quai}} - UP : {{::alarm.up}}</label>
+				<label>{{::alarm.date | date : 'dd/MM/yyyy &agrave; HH:mm'}}</label>
+			</td>
 			<td><img ng-src="{{getActions(alarm)}}" ng-click="seeActions(alarm)"></td>
 		</tr>
 	</table>
