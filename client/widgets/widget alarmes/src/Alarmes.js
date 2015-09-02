@@ -80,7 +80,7 @@ ajs.controller('AlarmCtrl', function($scope, $mdDialog, $timeout, $filter, Excel
 	};
 	$scope.exportExcel=function(tableId){
         var exportHref=Excel.tableToExcel(tableId,'Alarmes');
-        $timeout(function(){location.href=exportHref;},100); // trigger download
+        $timeout(function(){location.href=exportHref;},100); 
     };
     $scope.filter = function(search){
     	var result = [];
