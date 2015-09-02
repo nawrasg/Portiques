@@ -20,7 +20,7 @@
 				<th>Actions</th>
 			</tr>
 		</thead>
-		<tr ng-repeat="alarm in alarms" ng-hide="alarm.treated && !showAll">
+		<tr ng-repeat="alarm in alarms.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))" ng-hide="alarm.treated && !showAll">
 			<td><img ng-src="{{getIcon(alarm)}}"></td>
 			<td>{{::alarm.date | date : 'dd/MM/yyyy &agrave; HH:mm'}}</td>
 			<td>{{::alarm.level}}</td>
@@ -41,4 +41,7 @@
 			<td><img ng-src="{{getActions(alarm)}}" ng-click="seeActions(alarm)"></td>
 		</tr>
 	</table>
+	<div layout=row layout-align="center start">
+		<pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" class="pagination-sm" items-per-page="itemsPerPage"></pagination>
+	</div>
 </div>
