@@ -29,6 +29,12 @@ module.exports = function(config) {
       'bower_components/angular-material/angular-material.js',
       'bower_components/ngstorage/ngStorage.js',
       'bower_components/angular-utf8-base64/angular-utf8-base64.js',
+      'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+      'bower_components/Sortable/Sortable.js',
+      'bower_components/angular-dashboard-framework/dist/angular-dashboard-framework.js',
+      'bower_components/adf-structures-base/dist/adf-structures-base.js',
+      'bower_components/sockjs-client/dist/sockjs.js',
+      'bower_components/stomp-websocket/lib/stomp.min.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
