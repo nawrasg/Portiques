@@ -23,7 +23,7 @@
   "dependencies": {
     "angular-dashboard-framework": "0.8.0",
     "angular-material": "~0.10.1",
-    "angular-chart": "~0.3.2"
+    "angular-chart.js": "~0.8.1"
   },
   "devDependencies": {
     "angular-local-storage": "0.1.5"
