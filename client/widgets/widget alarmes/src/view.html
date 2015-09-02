@@ -5,7 +5,7 @@
 		<input ng-model=search ng-change="filter(search)">
 	</md-input-container>
 	<div layout=row style="margin-bottom:20px">
-		<md-checkbox flex class=md-primary ng-model="showAll" aria-label="Tout afficher">Tout afficher</md-checkbox>
+		<md-checkbox flex class=md-primary ng-model="showAll" aria-label="Tout afficher" ng-change="show(showAll)">Tout afficher</md-checkbox>
 		<button class="btn btn-success btn-lg" ng-click="exportExcel('#alarmTable')">Exporter Excel</button>
 	</div>
 	<table class="table table-striped" id="alarmTable" hide-sm>
@@ -20,7 +20,7 @@
 				<th>Actions</th>
 			</tr>
 		</thead>
-		<tr ng-repeat="alarm in alarms.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))" ng-hide="alarm.treated && !showAll">
+		<tr ng-repeat="alarm in alarms.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
 			<td><img ng-src="{{getIcon(alarm)}}"></td>
 			<td>{{::alarm.date | date : 'dd/MM/yyyy &agrave; HH:mm'}}</td>
 			<td>{{::alarm.level}}</td>
