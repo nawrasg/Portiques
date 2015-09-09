@@ -1,0 +1,124 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="..\..\bower_components/polymer/polymer.html">
+<link rel="import" href="..\..\bower_components/core-collapse/core-collapse.html">
+<link rel="import" href="..\..\bower_components/core-menu/core-menu.html">
+<link rel="import" href="..\..\bower_components/paper-dropdown/paper-dropdown.html">
+<link rel="import" href="..\..\bower_components/paper-item/paper-item.html">
+<link rel="import" href="..\..\bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+
+<dom-module id="sncf-traingate">
+  <style>
+    :host {
+      display: block;
+    }
+    .left50{
+    	float:left;
+    	width:49%
+    }
+    .right50{
+    	float:right;
+    	width:49%
+    }
+    body {
+      font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+      font-size: 14px;
+      margin: 0;
+      padding: 24px;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+      -webkit-touch-callout: none;
+    }
+
+    section {
+      padding: 20px 0;
+    }
+
+    section > div {
+      padding: 14px;
+      font-size: 16px;
+    }
+
+    html /deep/ paper-dropdown-menu {
+      box-sizing: border-box;
+      width: 170px;
+    }
+
+    html /deep/ core-menu {
+      box-sizing: border-box;
+      width: 170px;
+    }
+
+    paper-item {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    html /deep/ core-collapse {
+      border: 1px solid #ccc;
+      padding: 8px;
+    }
+
+    html /deep/ core-overlay {
+      border: 1px solid #ccc;
+      padding: 8px;
+      background: #fff;
+    }
+
+    .constrained-height {
+      height: 150px;
+    }
+
+    .colored {
+      color: #0f9d58;
+    }
+
+    .dropdown.colored::shadow #ripple,
+    .dropdown.colored::shadow #background {
+      border: 1px solid #0f9d58;
+      background-color: #b7e1cd;
+    }
+  </style>
+  <template>
+    <div>Hello from <span>{{foo}}</span></div>
+	<div style="clear:both"></div>
+    <div >
+    <paper-dropdown-menu label="Your favorite pastry">
+	    <paper-dropdown class="dropdown">
+	        <core-menu class="menu">
+	            <paper-item>Croissant</paper-item>
+	            <paper-item>Donut</paper-item>
+	            <paper-item>Financier</paper-item>
+	            <paper-item>Madeleine</paper-item>
+	        </core-menu>
+	    </paper-dropdown>
+	</paper-dropdown-menu>
+    </div>
+    <div class="right50">
+    right
+    </div>
+  </template>
+</dom-module>
+<script>
+(function() {
+  Polymer({
+    is: 'sncf-traingate',
+
+    properties: {
+      foo: {
+        type: String,
+        value: 'bar',
+        notify: true
+      }
+    }
+  });
+})();
+</script>

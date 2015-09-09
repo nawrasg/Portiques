@@ -1,0 +1,205 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="..\..\bower_components/polymer/polymer.html">
+<link rel="import" href="..\..\bower_components/paper-input/paper-input.html">
+<link rel="import" href="..\..\bower_components/paper-button/paper-button.html">
+<link rel="import" href="..\..\bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="..\..\bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="..\..\bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="..\..\bower_components/google-chart/google-chart.html">
+
+<dom-module id="sncf-gate" attributes="cp quai number">
+  <style>
+    :host {
+      	display: block;
+	   	background-color:white;
+	   	border-style:solid;
+	   	border-width:1px;
+	   	border-color:black;
+	   	height:570px;	
+	   	width:600px;
+    }
+    paper-button{
+    	margin-top:5px;
+    	margin-bottom:5px;
+    }
+    paper-checkbox{
+    	margin-bottom:13px
+    }
+    div.clear{
+    	clear:both
+    }
+    .status{
+    	height:96px;
+    	line-height:96px;
+    	text-align:center;
+    }
+    .legend{
+    	vertical-align:top;
+    	display: inline-block;
+    	text-align:center;
+    	width:48px;
+    }
+    .full{
+    	width:100%;
+    }
+    .half{
+    	width:45%;
+    }
+    .green{
+    	background:rgb(92, 184, 92);
+    	color:white;
+    }
+    .red{
+    	background:rgb(217, 83, 79);
+    	color:white;
+    }
+    .blue{
+    	background:rgb(0, 162, 232);
+    	color:white;
+    }
+    google-chart {
+	  height: 300px;
+	  width: 50em;
+	}
+    @media screen and (min-width: 768px) {
+	    .corps{
+	    	padding:20px 20px 20px 20px
+	    }
+    	.left50{
+    		float:left;
+    		width:49%;	
+    	}
+    	.right50{
+    		float:right;
+    		width:47%;
+    	}
+    }
+  </style>
+  <template>
+  	<iron-ajax
+		id="ajaxGate"
+	    auto
+	    handle-as="json"
+	    on-response="handleResponseGET"
+	    last-response="{{gateResponse}}"
+	    debounce-duration="300"></iron-ajax>
+  	<paper-toolbar>
+	  <paper-icon-button icon="menu" on-tap="menuAction"></paper-icon-button>
+	  <div class="title">Unit&eacute; de Passage</div>
+	</paper-toolbar>
+	<div style="visibility:collapse;">
+		<span>{{cp}}</span>
+	</div>
+	<div class=corps>
+	    <div class=left50>
+	    	<h1>Unit&eacute; de Passage <span>{{quai}}</span> - <span>{{number}}</span></h1>
+	    	<div class=status><img alt="ok" src="shield_ok.png" style="float:left"><h2>UP Activ&eacute;e</h2></div>
+	    	<h3>Classe voyageurs</h3>
+	    	<paper-input label="Input label"></paper-input>
+	    	<h3>D&eacute;brayage</h3>
+	    	<paper-button raised class="full green" on-click="openUP">Ouvrir</paper-button>
+	    	<paper-button raised class="full red" on-click="closeUP">Fermer</paper-button>
+	    </div>
+	    <div class=right50>
+	    	<img alt="statistics" src="statistics.png" style="float:right" on-click="showStatistics">
+	    	<div class=clear></div>
+	    	<h3>Sens du passage</h3>
+	    	<paper-button raised class="half blue" on-click="enter">Entr&eacute;e</paper-button>
+	    	<paper-button raised class="half blue" on-click="exit">Sortie</paper-button>
+	    	<h3>Param&egrave;tres</h3>
+	    	<paper-checkbox>Acc&egrave;s avec validation de titre</paper-checkbox>
+	    	<paper-checkbox>Acc&egrave;s avec bagage encombrant</paper-checkbox>
+	    	<h3>Horaires</h3>
+	    	<table width=100%>
+	    		<tr>
+	    			<td width=50% style="text-align:center">
+	    				<div class="legend" width=100>
+					    	<img alt="hour on" src="Time-Machine-icon-48-green.png">
+					    	<span>{{hour_on}}</span>	    	
+				    	</div>
+	    			</td>
+	    			<td width=50 style="text-align:center">
+	    				<div class="legend" width=100>
+					    	<img alt="hour on" src="Time-Machine-icon-48-red.png">
+					    	<span>{{hour_off}}</span>	    	
+				    	</div>
+	    			</td>
+	    		</tr>
+	    	</table>
+	    </div>
+    </div>
+    <paper-dialog id="statisticsDialog">
+	  <h2>Header</h2>
+	  <div>
+	  	<google-chart
+	  	  id='graph'
+		  type='pie'
+		  options='{"title": "Distribution of days in 2001Q1"}'
+		  cols='[{"label":"Month", "type":"string"}, {"label":"Days", "type":"number"}]'
+		  rows='[["Jan", 31],["Feb", 28],["Mar", 31]]'>
+		</google-chart>
+	  </div>
+	  <div class="buttons">
+	    <paper-button dialog-dismiss>Cancel</paper-button>
+	    <paper-button on-click="draw">Accept</paper-button>
+	  </div>
+	</paper-dialog>
+  </template>
+</dom-module>
+<script>
+(function() {
+  Polymer({
+    is: 'sncf-gate',
+
+    properties: {
+      hour_on:{
+    	  type: String,
+    	  value: '7h30'
+      },
+      hour_off:{
+    	  type: String,
+    	  value: '7h30'
+      }
+    },
+    ready: function(){
+    	this.$.ajaxGate.url = 'http://localhost:8080/sncf/gares/35000/gates/' + this.cp + '_' + this.quai + '_' + this.number;
+    },
+    listeners:{
+    	'google-chart-render':'enter'
+    },
+    handleResponseGET: function(){
+    	console.log(this.gateResponse);
+    	this.hour_on = this.gateResponse.heureOn;
+    	this.hour_off = this.gateResponse.heureOff;
+    },
+    openUP: function(){
+    	console.log('Je vais ouvrir cette putain d\'UP !!!');
+    },
+    closeUP: function(){
+    	console.log('Je vais la fermer !!!');
+    },
+    enter: function(){
+    	console.log('Bienvenue dans le côté obscur :)');
+    },
+    exit: function(){
+    	console.log('Au revoir !');
+    },
+    showStatistics: function(){
+    	this.$.statisticsDialog.toggle();
+    },
+    draw: function(){
+    	console.log('draw');
+    	this.$.graph.drawChart([["Month", "Days"], ["Jan", 31], ["Feb", 28], ["Mar", 31]]);
+    }
+  });
+})();
+</script>
