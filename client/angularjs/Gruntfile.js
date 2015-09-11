@@ -20,12 +20,21 @@ module.exports = function (grunt) {
     app: require('./bower.json').appPath || 'app',
     dist: 'dist'
   };
+  
+  grunt.loadNpmTasks('grunt-docular');
 
   // Define the configuration for all the tasks
   grunt.initConfig({
 
     // Project settings
     yeoman: appConfig,
+    
+    docular: {
+        useHtml5Mode: false, //Use angular's html5 mode? true/false. 
+        docular_webapp_target: '/docs', //The place where the docs will be generated 
+        showAngularDocs: true,
+        showDocularDocs: true,
+    },
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
@@ -433,7 +442,8 @@ module.exports = function (grunt) {
     'uglify',
     'filerev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'docular'
   ]);
 
   grunt.registerTask('default', [
