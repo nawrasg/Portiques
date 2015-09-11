@@ -6,7 +6,7 @@
  * @description # LoginCtrl Controller of the angularjsApp
  */
 
-nApp.controller('LoginCtrl', function($scope, $http, base64, $sessionStorage, $rootScope, $location, PortiquesUri) {
+nApp.controller('LoginCtrl', function($scope, $http, base64, $sessionStorage, $rootScope, $location, $mdToast, PortiquesUri) {
 	$scope.auth = function(){
 		var nUsername = $scope.user.username;
 		var nPwd = $scope.user.password;
@@ -18,8 +18,26 @@ nApp.controller('LoginCtrl', function($scope, $http, base64, $sessionStorage, $r
 				delete $http.defaults.headers.common.Authorization;
 				$location.path('/demo');
 			}else{
-				console.log(status, data);
+				showToast($mdToast, data);
 			}
 		});
 	};
+	
+	var toastPosition = {
+    bottom : false,
+    top : true,
+    left : false,
+    right : true
+  };
+  
+  function getToastPosition() {
+    return Object.keys(toastPosition).filter(function(pos) {
+      return toastPosition[pos];
+    }).join(' ');
+  }
+  
+  function showToast($mdToast, message) {
+    $mdToast.show($mdToast.simple().content(message).position(
+        getToastPosition()).hideDelay(3000));
+  }
 });
